@@ -8,7 +8,7 @@ const MAX_DIAMETER = 800;
 const MAX_X_OFFSET = 100;
 
 const body = document.querySelector('body');
-const shootButton = document.getElementById('shoot-button');
+const shootButton = document.querySelector('.shoot-button');
 
 function shootFirework() {
     const fireworkXPos = Math.random() * 100;

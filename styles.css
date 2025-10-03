@@ -25,8 +25,8 @@ body {
     width: var(--star-size)
 }
 
-#shoot-button {
-    background: radial-gradient(circle at 20% 20%, #FF0400, #9A0000);
+.shoot-button {
+    background: radial-gradient(circle at 20% 20%, hsl(1, 100%, 50%), hsl(0, 100%, 30%));
     border: none;
     border-radius: 999px;
     bottom: 50px;
@@ -47,11 +47,32 @@ body {
     transform: translateX(-50%);
     text-shadow: 1px 1px 0.3px rgba(69, 0, 0, 0.248);
     width: 100px;
+    z-index: 0;
 }
 
-#shoot-button:active {
-    transform: translateX(-50%) translateY(2px);
+.shoot-button:active {
+    background: linear-gradient(135deg, hsl(1, 100%, 50%), hsl(0, 100%, 30%));
+    box-shadow:
+        2.25px 3px 4px rgba(0, 0, 0, 0.25),
+        inset -1.5px -2px 1.8px rgba(0, 0, 0, 0.30),
+        inset 1.5px 2px 1.8px rgba(255, 255, 255, 0.25);
+    font-size: 1.85rem;
+    transform: translateX(-50%) scale(0.97);
 }
+
+.shoot-button:active::before {
+    content: '';
+    background: linear-gradient(135deg, hsl(0, 100%, 35%), hsl(0, 100%, 45%));
+    border-radius: inherit;
+    filter: blur(1px);
+    height: 90%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    z-index: -1;
+  }
 
 @keyframes shoot-firework {
     0% {
