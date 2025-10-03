@@ -3,8 +3,10 @@ const MIN_STARS = 50;
 const MAX_STARS = 500;
 const MAX_HUE_VARIATION = 50;
 const MAX_LIGHTNESS_VARIATION = 20;
-const MIN_DIAMETER = 300;
-const MAX_DIAMETER = 800;
+const MIN_DIAMETER = 200;
+const MAX_DIAMETER = 600;
+const MIN_DURATION = 1;
+const MAX_DURATION = 3;
 const MAX_X_OFFSET = 100;
 
 const body = document.querySelector('body');
@@ -45,6 +47,9 @@ function shootFirework() {
 
     const explosionDiameter = Math.floor(Math.random() * (MAX_DIAMETER - MIN_DIAMETER)) + MIN_DIAMETER;
     firework.style.setProperty('--diameter', `${explosionDiameter}px`);
+
+    const explosionDuration = ((explosionDiameter - MIN_DIAMETER) / MAX_DIAMETER) * (MAX_DURATION - MIN_DURATION) + MIN_DURATION;
+    firework.style.setProperty('--duration', `${explosionDuration}s`);
 
     const xOffset = Math.floor(Math.random() * MAX_X_OFFSET * 2 + 1) - MAX_X_OFFSET;
     firework.style.setProperty('--x-offset', `${xOffset}px`);

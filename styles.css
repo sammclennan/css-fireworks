@@ -16,8 +16,8 @@ body {
 }
 
 .firework {
-    --star-size: 1.5px;
-    animation: shoot-firework 1s ease-out, explode-firework 2s ease-out 0.8s;
+    --star-size: 1.25px;
+    animation: shoot-firework 1s ease-out, explode-firework var(--duration) ease-out 0.8s;
     aspect-ratio: 1;
     border-radius: 999px;
     position: absolute;
@@ -47,7 +47,7 @@ body {
     transform: translateX(-50%);
     text-shadow: 1px 1px 0.3px rgba(69, 0, 0, 0.248);
     width: 100px;
-    z-index: 0;
+    z-index: 1;
 }
 
 .shoot-button:active {
@@ -80,12 +80,11 @@ body {
         transform: translateX(var(--x-offset));
         width: calc(var(--star-size) + 5px);
     }
-
 }
 
 @keyframes explode-firework {
     100% {
-        width: var(--diameter);
         opacity: 0;
+        width: var(--diameter);
     }
 }
