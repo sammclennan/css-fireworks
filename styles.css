@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(
+        hsl(220, 100%, 8%) 0%,
+        hsl(220, 92%, 10%) 35%,
+        hsl(210, 75%, 12%) 65%,
+        hsl(220, 100%, 5%) 100%
+    );
+    font-family: "Bangers", system-ui;
+    height: 100vh;
+}
+
+.firework {
+    --star-size: 1.5px;
+    animation: shoot-firework 1s ease-out, explode-firework 2s ease-out 0.8s;
+    aspect-ratio: 1;
+    border-radius: 999px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: var(--star-size)
+}
+
+#shoot-button {
+    background: radial-gradient(circle at 20% 20%, #FF0400, #9A0000);
+    border: none;
+    border-radius: 999px;
+    bottom: 50px;
+    box-shadow:
+        2.25px 3px 4px rgba(0, 0, 0, 0.25),
+        inset -1.5px -2px 1.8px rgba(0, 0, 0, 0.30),
+        inset 1.5px 2px 1.8px rgba(255, 255, 255, 0.25),
+        inset -2.25px -3px 5px rgba(60, 0, 0, 0.25),
+        inset 9px 12px 5px rgba(255, 120, 120, 0.25)
+    ;
+    color: rgb(245, 245, 245);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 2rem;
+    height: 100px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    text-shadow: 1px 1px 0.3px rgba(69, 0, 0, 0.248);
+    width: 100px;
+}
+
+#shoot-button:active {
+    transform: translateX(-50%) translateY(2px);
+}
+
+@keyframes shoot-firework {
+    0% {
+        top: 100%;
+        transform: translateX(var(--x-offset));
+        width: calc(var(--star-size) + 5px);
+    }
+
+}
+
+@keyframes explode-firework {
+    100% {
+        width: var(--diameter);
+        opacity: 0;
+    }
+}
