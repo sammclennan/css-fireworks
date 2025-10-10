@@ -1,10 +1,32 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 * {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 body {
+    background: -webkit-gradient(
+        linear,
+        left top, left bottom,
+        from(hsl(220, 100%, 8%)),
+        color-stop(35%, hsl(220, 92%, 10%)),
+        color-stop(65%, hsl(210, 75%, 12%)),
+        to(hsl(220, 100%, 5%))
+    );
+    background: -o-linear-gradient(
+        hsl(220, 100%, 8%) 0%,
+        hsl(220, 92%, 10%) 35%,
+        hsl(210, 75%, 12%) 65%,
+        hsl(220, 100%, 5%) 100%
+    );
     background: linear-gradient(
         hsl(220, 100%, 8%) 0%,
         hsl(220, 92%, 10%) 35%,
@@ -18,20 +40,31 @@ body {
 
 .firework {
     --star-size: 1.25px;
-    animation: shoot-firework 1s ease-out, explode-firework var(--duration) ease-out 0.8s;
+    -webkit-animation: shoot-firework 1s ease-out, explode-firework var(--duration) ease-out 0.8s;
+            animation: shoot-firework 1s ease-out, explode-firework var(--duration) ease-out 0.8s;
     aspect-ratio: 1;
     border-radius: 999px;
     position: absolute;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     width: var(--star-size)
 }
 
 .shoot-button {
+    background: -o-radial-gradient(20% 20%, circle, hsl(1, 100%, 50%), hsl(0, 100%, 30%));
     background: radial-gradient(circle at 20% 20%, hsl(1, 100%, 50%), hsl(0, 100%, 30%));
     border: none;
     border-radius: 999px;
     bottom: 50px;
-    box-shadow:
+    -webkit-box-shadow:
+        2.25px 3px 4px rgba(0, 0, 0, 0.25),
+        inset -1.5px -2px 1.8px rgba(0, 0, 0, 0.30),
+        inset 1.5px 2px 1.8px rgba(255, 255, 255, 0.25),
+        inset -2.25px -3px 5px rgba(60, 0, 0, 0.25),
+        inset 9px 12px 5px rgba(255, 120, 120, 0.25)
+    ;
+            box-shadow:
         2.25px 3px 4px rgba(0, 0, 0, 0.25),
         inset -1.5px -2px 1.8px rgba(0, 0, 0, 0.30),
         inset 1.5px 2px 1.8px rgba(255, 255, 255, 0.25),
@@ -45,41 +78,75 @@ body {
     height: 100px;
     left: 50%;
     position: absolute;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
     text-shadow: 1px 1px 0.3px rgba(69, 0, 0, 0.248);
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     width: 100px;
     z-index: 1;
 }
 
 .shoot-button:active {
+    background: -o-linear-gradient(315deg, hsl(1, 100%, 50%), hsl(0, 100%, 30%));
     background: linear-gradient(135deg, hsl(1, 100%, 50%), hsl(0, 100%, 30%));
-    box-shadow:
+    -webkit-box-shadow:
+        2.25px 3px 4px rgba(0, 0, 0, 0.25),
+        inset -1.5px -2px 1.8px rgba(0, 0, 0, 0.30),
+        inset 1.5px 2px 1.8px rgba(255, 255, 255, 0.25);
+            box-shadow:
         2.25px 3px 4px rgba(0, 0, 0, 0.25),
         inset -1.5px -2px 1.8px rgba(0, 0, 0, 0.30),
         inset 1.5px 2px 1.8px rgba(255, 255, 255, 0.25);
     font-size: 1.85rem;
-    transform: translateX(-50%) scale(0.97);
+    -webkit-transform: translateX(-50%) scale(0.97);
+        -ms-transform: translateX(-50%) scale(0.97);
+            transform: translateX(-50%) scale(0.97);
 }
 
 .shoot-button:active::before {
     content: '';
+    background: -o-linear-gradient(315deg, hsl(0, 100%, 35%), hsl(0, 100%, 45%));
     background: linear-gradient(135deg, hsl(0, 100%, 35%), hsl(0, 100%, 45%));
     border-radius: inherit;
-    filter: blur(1px);
+    -webkit-filter: blur(1px);
+            filter: blur(1px);
     height: 90%;
     left: 50%;
     position: absolute;
     top: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     width: 90%;
     z-index: -1;
   }
 
+@-webkit-keyframes shoot-firework {
+    0% {
+        top: 100%;
+        -webkit-transform: translateX(var(--x-offset));
+                transform: translateX(var(--x-offset));
+        width: calc(var(--star-size) + 5px);
+    }
+}
+
 @keyframes shoot-firework {
     0% {
         top: 100%;
-        transform: translateX(var(--x-offset));
+        -webkit-transform: translateX(var(--x-offset));
+                transform: translateX(var(--x-offset));
         width: calc(var(--star-size) + 5px);
+    }
+}
+
+@-webkit-keyframes explode-firework {
+    100% {
+        opacity: 0;
+        width: var(--diameter);
     }
 }
 
