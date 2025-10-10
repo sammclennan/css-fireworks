@@ -13,6 +13,7 @@ body {
     );
     font-family: "Bangers", system-ui;
     height: 100vh;
+    overflow: hidden;
 }
 
 .firework {
