@@ -20,8 +20,8 @@ function shootFirework() {
 
     const firework = document.createElement('div');
     firework.classList.add('firework'); 
-    firework.style.left = `${fireworkXPos}%`;
-    firework.style.top = `${fireworkYPos}%`;
+    firework.style.setProperty('--x', `${fireworkXPos}%`);
+    firework.style.setProperty('--y', `${fireworkYPos}%`);
 
     let backgroundLayers = [];
 
